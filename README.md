@@ -21,7 +21,7 @@ of association between the Yellow Taix and Uber pick-up counts in a given time p
 4. Explore two factors:payment type and pick-up time, which might be the factors that
 influence the tipping behavior of passengers.
 
-book url:
+book url: https://leemean123.github.io/TaxiNYC/
 
 
 *This repo was initially generated from a bookdown template available here: https://github.com/jtr13/EDAVtemplate.*	
