@@ -1,2 +1,29 @@
-# Data sources
+# About the Data
+
+NYC Taxi Data:
+
+From NYC OpenData and NYC Taxi & Limousine Commission. I choose Yellow Taxi Trip datasets
+for 2021 Jan-July, 2014 May, 2009 January and 2012 January.
+
+Each dataset contains around 17-20 variables(the number of variables slightly varies from different dataset but approximately the same). I will mainly focus on the variables “pickup_datetime”, “pickup_longitude”, “pickup_latitude”, “dropoff_longitude”, “pickup_latitude” ,"tip_amount",
+"payment_type" in my analysis. These variables provide the information of precise location coordinates for where the trip started and ended, the time when the trip started and ended, the tip amount for
+each ride and the payment type for the Taxi fare.
+
+Pickup_datetime: The date and time when the meter was engaged.
+Dropoff_datetime: The date and time when the meter was disengaged.
+Pickup_longitude: Longitude where the meter was engaged.
+Pickup_latitude: Latitude where the meter was disengaged.
+Dropoff_longitude: Longitude where the meter was engaged.
+Dropoff_latitude: Latitude where the meter was disengaged.
+
+For the datasets contained small amount of data, like the 2021 Yellow Taxi Trip dataset, it only contains the data from January through July, I already downloaded it from the website and imported the data from my laptop. For the datasets contained huge amount of data, for example, 2009/2012 Yellow Taxi Trip datasets etc, I will directly import the data from its original source. 
+
+
+Uber Data:
+
+I can only find incomplete NYC Uber data at FiveThirtyEight website from April 2014 to
+September 2014 and I will combine this dataset with 2014 Yellow Taxi Trip dataset. This Uber
+dataset only contains very sketchy information compared to the Yellow Taxi Trip dataset and it 
+only has four variables: Date/Time (only the pickup data and time, no dropoff), Lat, Lon(the longitude and latitude of the pickup location, no dropoff), Base(the base company code affiliated with the Uber pickup, which is negligible for my analysis). So the issue I got here might influence the accuracy of 
+my analysis because it missed a lot of valuable information. 
 

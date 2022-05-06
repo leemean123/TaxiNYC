@@ -1,1 +1,117 @@
 # Missing values
+
+```{r}
+library(tidyverse)
+taxi.09<-read_csv("https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2009-01.csv")
+taxi.12<-read_csv("https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2012-01.csv")
+
+set.seed(0)
+sample09 <-sample_n(taxi.09,1000000, replace = FALSE)
+sample12 <-sample_n(taxi.12,1000000, replace = FALSE)
+
+```
+
+```{r}
+
+taxi5<-read_csv("https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2014-05.csv")
+set.seed(0)
+sample_taxi5<-sample_n(taxi5,652435, replace = FALSE)
+
+missing.values <- sample_taxi5 %>%
+  gather(key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  group_by(key) %>%
+  mutate(total = n()) %>%
+  group_by(key, total, isna) %>%
+  summarise(num.isna = n()) %>%
+  mutate(pct = num.isna / total * 100)
+
+levels <-
+    (missing.values  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+
+percentage.plot <- missing.values %>%
+      ggplot() +
+        geom_bar(aes(x = reorder(key, desc(pct)), 
+                     y = pct, fill=isna), 
+                 stat = 'identity', alpha=0.8) +
+      scale_x_discrete(limits = levels) +
+      scale_fill_manual(name = "", 
+                        values = c('steelblue', 'tomato3'), labels = c("Present", "Missing")) +
+      coord_flip() +
+      labs(title = "Percentage of missing values", x =
+             'Variable', y = "% of missing values")
+
+percentage.plot 
+
+```
+In the sampling dataset of Yellow Taxi Trip May 2014, as we can see from this "Percentage of missing values" plot, the only variable contains NAs are "store_and_fwd_flag" and around 50% of the values are missing.
+
+
+```{r}
+
+missing.values <- sample09 %>%
+  gather(key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  group_by(key) %>%
+  mutate(total = n()) %>%
+  group_by(key, total, isna) %>%
+  summarise(num.isna = n()) %>%
+  mutate(pct = num.isna / total * 100)
+
+levels <-
+    (missing.values  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+
+percentage.plot <- missing.values %>%
+      ggplot() +
+        geom_bar(aes(x = reorder(key, desc(pct)), 
+                     y = pct, fill=isna), 
+                 stat = 'identity', alpha=0.8) +
+      scale_x_discrete(limits = levels) +
+      scale_fill_manual(name = "", 
+                        values = c('steelblue', 'tomato3'), labels = c("Present", "Missing")) +
+      coord_flip() +
+      labs(title = "Percentage of missing values", x =
+             'Variable', y = "% of missing values")
+
+percentage.plot 
+
+```
+
+
+In the sampling dataset of Yellow Taxi Trip January 2009, as we can see from this "Percentage of missing values" plot, all values of these three variables are missing.
+
+
+```{r}
+
+missing.values <- sample12 %>%
+  gather(key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  group_by(key) %>%
+  mutate(total = n()) %>%
+  group_by(key, total, isna) %>%
+  summarise(num.isna = n()) %>%
+  mutate(pct = num.isna / total * 100)
+
+levels <-
+    (missing.values  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+
+percentage.plot <- missing.values %>%
+      ggplot() +
+        geom_bar(aes(x = reorder(key, desc(pct)), 
+                     y = pct, fill=isna), 
+                 stat = 'identity', alpha=0.8) +
+      scale_x_discrete(limits = levels) +
+      scale_fill_manual(name = "", 
+                        values = c('steelblue', 'tomato3'), labels = c("Present", "Missing")) +
+      coord_flip() +
+      labs(title = "Percentage of missing values", x =
+             'Variable', y = "% of missing values")
+
+percentage.plot 
+
+table(colSums(is.na(sample12)))
+
+
+
+```
+In the sampling dataset of Yellow Taxi Trip January 2012, as we can see from this "Percentage of missing values" plot, almost 50% values of "store_and_fwd_flag" are missing and only very few values of "dropoff_latitude" and "dropoff_longitude" are missing.  

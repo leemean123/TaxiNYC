@@ -1,0 +1,7 @@
+introduction
+about-the-data
+data-transformation
+missing-values
+results
+interactive-component
+conclusion

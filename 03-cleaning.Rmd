@@ -1,1 +1,27 @@
 # Data transformation
+
+In historic NYC arrest dataset (building the NYC Crime Map), I extract the columns
+containing the data I need, which are "Latitude" and "Longitude" columns. But there
+are some NAs in these two columns, so I remove NAs from the data and then do the 
+plotting.
+
+In the Yellow Taxi Trip(2021 Jan-July) dataset, which is a very big dataset that contains
+millions rows of data, the data loading process will take forever, so in here I sampled
+the data and applied the sampled data for analysis. To avoid the bias, in here I did
+the random sampling to randomly select the data from the original dataset. I also
+repeated this random sampling process to my other dataset, such as the Yellow Taxi Trip
+datasets in January 2009/2012 and Yellow Taxi Trip dataset for May 2014.
+
+For ploting the graph for pick-up counts for year 2009,2012, the original datasets
+for these two year are separated so I combine these two sample datasets together
+to do the further data ploting. 
+
+For ploting the graph to compare hourly pick-ups for Taxi and Uber:
+I can only find the Uber data from April 2014 through September 2014 online and
+each of these datasets contains millions records of data. It will take tremendous
+amount of time to load each datasets, so I just gonna use only one month data
+for 2014 since only one month's dataset contains millions records of data. So
+in here, I am also going to load Yellow Taxi Trip datasets for the same month in
+2014 in order to conduct the comparison between the Uber and Taxi data later. In
+here, I am going to sample the Yellow Taxi dataset and get a sample dataset with
+same size of Uber data.

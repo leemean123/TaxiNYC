@@ -1,2 +1,22 @@
 # Conclusion
 
+Takeways:
+1.There are more pick-ups in wealthy neighborhood compared to poor neighborhood.
+2.The demand for pick-ups hit the peak at the rush hours.
+3.People tend to take Taxi instead of Uber during the off-peak time period because of 
+the lower fare of Taxi.
+4.With the launch of Uber, pick-ups for Taxi drops and Uber has huge impact on
+the Taxi business.
+5.The crime rate of one area probably will influence the pick-up patterns for
+Uber and Taxi drivers. 
+6.Tipping behavior of passengers might be influenced by the payment type and pick-up
+hour.
+
+Limitations: Data is incomplete, for example, only limit data for Uber rides available
+online, so the result probably is not accurate and not comprehensive. And the available datasets
+are too large, so I only use one month data for Uber/Taxi trips analysis and there will exist
+some error or inconsistency in my data analysis compared to the analysis with more data. And in 
+some datasets, it only has LocationID instead of specific coordinates so it's kind of difficult for 
+me to convert the data into a right form.
+
+Lesson learned: learn new packages for ploting the map and arranging the plot.
